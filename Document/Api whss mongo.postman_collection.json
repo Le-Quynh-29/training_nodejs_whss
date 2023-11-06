@@ -1,0 +1,961 @@
+{
+	"info": {
+		"_postman_id": "4ed70fa6-6957-418d-b933-15bbc3635527",
+		"name": "Api whss mongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27364648"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"whssadmin\",\r\n    \"password\": 12345678\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get list user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user?page=0&size=10&column=username&sort_by=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "column",
+									"value": "username"
+								},
+								{
+									"key": "sort_by",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": -1,\r\n    \"username\": \"admin_test\",\r\n    \"password\": \"12345678\",\r\n    \"role\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"whssadmin\",\r\n    \"password\": 12345678,\r\n    \"role\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/update/1?_method=PUT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PUT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update relationship",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sensor_id\": \"4,5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/update-relationship/1?_method=PUT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"update-relationship",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PUT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/destroy/5?_method=DELETE",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"destroy",
+								"5"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "DELETE"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensor",
+			"item": [
+				{
+					"name": "Get list sensor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor?page=0&size=10&column=name&sort_by=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "column",
+									"value": "name"
+								},
+								{
+									"key": "sort_by",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a sensor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"920MHz_09\",\r\n    \"place\": \"茅ヶ崎_09\",\r\n    \"gw_name\": \"GW012\",\r\n    \"gw_id\": \"GW21-GW210012\",\r\n    \"sensor_mac_id\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sensor/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a sensor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"920MHz_09\",\r\n    \"place\": \"茅ヶ崎_09\",\r\n    \"gw_name\": \"GW210012\",\r\n    \"gw_id\": \"GW21-GW210012\",\r\n    \"sensor_mac_id\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sensor/update/8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor",
+								"update",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete sensor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor/delete/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alarm setting",
+			"item": [
+				{
+					"name": "Get alarm setting by auth",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/alarm-setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"alarm-setting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create or update an alarm setting",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"alarm_hydrogen_value_level_1\":20,\r\n    \"alarm_hydrogen_value_level_2\":8,\r\n    \"chart_hydrogen_status_marker_level_1\":1,\r\n    \"chart_hydrogen_status_marker_level_2\":0,\r\n    \"chart_hydrogen_status_dashed_line_level_1\":1,\r\n    \"chart_hydrogen_status_dashed_line_level_2\":1,\r\n    \"status_dashed_line_level_2\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/alarm-setting/create-or-update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"alarm-setting",
+								"create-or-update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensor mac",
+			"item": [
+				{
+					"name": "Get list num by gw",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor-mac/get-num-by-gw?gw_id=GW21-GW210012",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-mac",
+								"get-num-by-gw"
+							],
+							"query": [
+								{
+									"key": "gw_id",
+									"value": "GW21-GW210012"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gw",
+			"item": [
+				{
+					"name": "Get list gw",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/gw",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"gw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create or update gw and sensor mac",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/gw/create-or-update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"gw",
+								"create-or-update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensor record",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"2023/09/30\",\r\n    \"end_date\": \"2023/10/30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sensor-record/delete?_method=DELETE",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-record",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "DELETE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export radio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"deployment\": \"GW21-GW210012\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sensor-record/export-radio",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-record",
+								"export-radio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export data sensor record",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"2023/08/08\",\r\n    \"end_date\": \"2023/08/22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sensor-record/export-data",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-record",
+								"export-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get data dashboard by chart name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor-record/data-dashboard/ph",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-record",
+								"data-dashboard",
+								"ph"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get data chart show sensor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor-record/data-show-sensor/ph?gw_id=GW21-GW210012&sensor_id=2&time=1 year",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-record",
+								"data-show-sensor",
+								"ph"
+							],
+							"query": [
+								{
+									"key": "gw_id",
+									"value": "GW21-GW210012"
+								},
+								{
+									"key": "sensor_id",
+									"value": "2"
+								},
+								{
+									"key": "time",
+									"value": "1 year"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create sensor record by all gw",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor-record/create-by-all-gw",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-record",
+								"create-by-all-gw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create sensor record by gw",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"deployment\": \"GW21-GW210012\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sensor-record/create-by-gw",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-record",
+								"create-by-gw"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensor setting",
+			"item": [
+				{
+					"name": "Get sensor setting",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor-setting?sensor_id=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-setting"
+							],
+							"query": [
+								{
+									"key": "sensor_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create or update sensor setting",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sensor_id\": 5,\r\n    \"column\": \"ph\",\r\n    \"setting\": [{\"time\":\"1 year\",\"min\":null,\"max\":null}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sensor-setting/create-or-update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor-setting",
+								"create-or-update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
