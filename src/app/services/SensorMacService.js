@@ -61,16 +61,16 @@ class SensorMacService {
             {
                 $lookup: {
                     from: "sensormacs",
-                    localField: "gw",    // field in the orders collection
-                    foreignField: "gwId",  // field in the items collection
+                    localField: "gw",    
+                    foreignField: "gwId",
                     as: "sensorMacs"
                 }
             },
             {
                 $lookup: {
                     from: "sensors",
-                    localField: "gw",    // field in the orders collection
-                    foreignField: "gwId",  // field in the items collection
+                    localField: "gw",   
+                    foreignField: "gwId", 
                     as: "sensors"
                 }
             },

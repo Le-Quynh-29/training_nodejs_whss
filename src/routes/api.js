@@ -28,9 +28,12 @@ router.get('/user', authMiddleware, userController.index);
 
 //sensor
 router.get('/sensor', authMiddleware, sensorController.index);
+router.get('/sensor/by-user', authMiddleware, sensorController.getSensorByUser);
+router.get('/sensor/get-list', authMiddleware, sensorController.getListSensor);
 router.post('/sensor/store', authMiddleware, SensorCreateValidator, sensorController.store);
 router.put('/sensor/update/:id', authMiddleware, SensorUpdateValidator, sensorController.update);
 router.delete('/sensor/delete/:id', authMiddleware, sensorController.destroy);
+router.get('/sensor/:id', authMiddleware, sensorController.show);
 
 //alarm-setting
 router.get('/alarm-setting', authMiddleware, alarmSettingController.index);

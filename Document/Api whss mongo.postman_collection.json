@@ -438,6 +438,99 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get show sensor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sensor by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor/by-user?user_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor",
+								"by-user"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list sensor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bear_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sensor/get-list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sensor",
+								"get-list"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

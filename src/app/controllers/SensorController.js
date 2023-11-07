@@ -19,6 +19,20 @@ class SensorController {
     }
 
     /**
+     * Get show sensor
+     * @param {*} req 
+     * @param {*} res 
+     * @return mixed
+     */
+    show(req, res) {
+        sensorService.getSensor(req.params.id).then(sensor => {
+            return baseController.responseSuccess(res, sensor);
+        }).catch((err) => {
+            return baseController.responseError(res, err.message);
+        });
+    }
+
+    /**
      * Create a new sensor
      * @param {*} req 
      * @param {*} res 
@@ -90,6 +104,26 @@ class SensorController {
         }
         sensorService.deleteSensor(req);
         return baseController.responseSuccess(res, '削除しました。'); 
+    }
+
+    /**
+     * Get sensor by user
+     * @param {*} req 
+     * @param {*} res 
+     * @return mixed 
+     */
+    async getSensorByUser(req, res) {
+        return baseController.responseSuccess(res, await sensorService.getSensorByUser(req.query.user_id));
+    }
+
+    /**
+     * Get list sensor
+     * @param {*} req 
+     * @param {*} res 
+     * @return mixed
+     */
+    async getListSensor(req, res) {
+        return baseController.responseSuccess(res, await sensorService.getListSensor());
     }
 }
 

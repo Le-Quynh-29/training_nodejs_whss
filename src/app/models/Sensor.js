@@ -14,10 +14,10 @@ const Sensor = new Schema({
 
 //Add plugins
 Sensor.plugin(AutoIncrement.plugin, {
-    model: 'Sensor', 
-    field: '_id', 
+    model: 'Sensor',
+    field: '_id',
     startAt: 1,
-    incrementBy: 1, 
+    incrementBy: 1,
 });
 
 module.exports = mongoose.model('Sensor', Sensor);

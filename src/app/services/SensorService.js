@@ -112,6 +112,61 @@ class SensorService {
         await UserSensor.deleteMany({ sensorId: id });
         await Sensor.deleteOne({ _id: id });
     }
+
+    /**
+     * Get show sensor
+     * @param {*} sensorId 
+     * @return mixed
+     */
+    getSensor(sensorId) {
+        return Sensor.findOne({ _id: sensorId });
+    }
+
+    /**
+     * Get sensor by user
+     * @param {Number} userId 
+     * @return mixed
+     */
+    async getSensorByUser(userId) {
+        userId = parseInt(userId);
+        const data = await UserSensor.aggregate([
+            {
+                $lookup: {
+                    from: "sensors",
+                    localField: "sensorId",   
+                    foreignField: "_id",
+                    as: "sensors"
+                }
+            },
+            { 
+                $match: {
+                    userId: userId
+                }
+            }, 
+            {
+                $project: {
+                    _id: 0,
+                    sensorId: 1, 
+                }
+            }
+        ]);
+        return data.map((value) => value.sensorId);
+    }
+
+    /**
+     * Get list sensor
+     * @return mixed
+     */
+    async getListSensor() {
+        return await Sensor.aggregate([
+            {
+                $project: {
+                    _id: 1, 
+                    name: 1
+                }
+            }
+        ]);
+    }
 }
 
 module.exports = new SensorService();
