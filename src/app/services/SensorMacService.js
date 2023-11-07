@@ -1,5 +1,5 @@
 const SensorMac = require('../models/SensorMac');
-const whssHelper = require('../../helper/WhssHelper');
+const whssHelper = require('../helper/WhssHelper');
 const axios = require('axios');
 const Gw = require('../models/Gw');
 

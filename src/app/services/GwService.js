@@ -2,7 +2,7 @@ require('dotenv').config();
 const Gw = require('../models/Gw');
 const SensorMac = require('../models/SensorMac');
 const axios = require('axios');
-const whssHelper = require('../../helper/WhssHelper');
+const whssHelper = require('../helper/WhssHelper');
 const sensorMacService = require('../services/SensorMacService');
 
 class GwService {

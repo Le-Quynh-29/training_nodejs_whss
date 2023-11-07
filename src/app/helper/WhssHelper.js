@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-const Token = require('../app/models/Token');
+const Token = require('../models/Token');
 const qs = require('querystring');
 
 class WhssHelper {

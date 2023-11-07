@@ -1,5 +1,4 @@
 require('dotenv').config();
-const secretKey = require('../../helper/SecretKey');
 const jwt = require('jsonwebtoken');
 
 module.exports = function authenticateToken(req, res, next) {

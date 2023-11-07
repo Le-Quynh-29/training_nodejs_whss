@@ -1,6 +1,6 @@
 const baseController = require("./BaseController.js");
 const Gw = require('../models/Gw');
-const gwService = require('../services/GWService');
+const gwService = require('../services/GwService');
 const tokenService = require('../services/TokenService');
 
 class GwController {

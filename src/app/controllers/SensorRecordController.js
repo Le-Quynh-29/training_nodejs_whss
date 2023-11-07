@@ -3,7 +3,7 @@ const sensorRecordService = require('../services/SensorRecordService');
 const path = require('path');
 const fs = require('fs');
 const { validationResult } = require('express-validator');
-const gwService = require('../services/GWService');
+const gwService = require('../services/GwService');
 
 class SensorRecordController {
     /**

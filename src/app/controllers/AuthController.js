@@ -3,7 +3,6 @@ const baseController = require("./BaseController.js");
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const secretKey = require('../../helper/SecretKey');
 const { validationResult } = require('express-validator');
 const blacklistedTokens = [];
 

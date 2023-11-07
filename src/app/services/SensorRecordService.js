@@ -1,7 +1,7 @@
 require('dotenv').config();
 const SensorRecord = require('../models/SensorRecord');
 const tokenService = require('../services/TokenService');
-const whssHelper = require('../../helper/WhssHelper');
+const whssHelper = require('../helper/WhssHelper');
 const axios = require('axios');
 const logService = require('../services/LogService');
 const Log = require('../models/Log');
@@ -282,25 +282,10 @@ class SensorRecordService {
      * @return mixed
      */
     async getStartTime(deployment) {
-        const log = await Log.aggregate([
-            {
-                $match: {
-                    gwId: deployment,
-                    isManual: false,
-                }
-            },
-            {
-                $sort: {
-                    lastTimestamp: -1
-                }
-            },
-            {
-                $limit: 1
-            }
-        ]);
+        const log = await Log.findOne({ gwId: deployment, isManual: false}).sort({ lastTimestamp: "desc"});
         let startTimestamp = moment().unix();
         if (log) {
-            startTimestamp = log[0].lastTimestamp;
+            startTimestamp = log.lastTimestamp;
         }
         return startTimestamp;
     }
@@ -313,7 +298,7 @@ class SensorRecordService {
     async getCollectXByInterval(deployment) {
         const token = await tokenService.getToken();
         const count = 0;
-        const startTimestamp = await getStartTime(deployment);
+        const startTimestamp = await this.getStartTime(deployment);
         await this.handlerApiCollectXByInterval(token, count, startTimestamp, deployment);
     }
 

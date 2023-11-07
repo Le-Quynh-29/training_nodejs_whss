@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
-const User = require('../app/models/User');
-const truncateCollection = require('../helper/TruncateCollection');
-const db = require('../config/db');
+const User = require('../../app/models/User');
+const truncateCollection = require('../../app/helper/TruncateCollection');
+const db = require('../../config/db');
 
 //connect db
 db.connect();
